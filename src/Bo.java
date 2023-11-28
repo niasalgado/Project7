@@ -5,13 +5,12 @@
  *******************************************/
 
 public class Bo extends Weapon {
-    String name = "bo";
-    int power = 3;
-    String ability = "To bludgeon anyone or anything within 10 feet";
-    String type = "staff";
+    // String name = "bo";
+    // int power = 3;
+    // String ability = "To bludgeon anyone or anything within 10 feet";
+    // String type = "staff";
 
-    public Bo(String name, int power, String ability, String type) {
-        super(name, power, ability, type);
+    public Bo() {
+        super("bo", 3, "To bludgeon anyone or anything within 10 feet", "staff");
     }
-    
 }

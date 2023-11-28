@@ -5,13 +5,12 @@
  *******************************************/
 
 public class Axe extends Weapon {
-    String name = "axe";
-    int power = 4;
-    String ability = "to slice anyone or anything within 10 feet";
-    String type = "cudgel";
+    // String name = "axe";
+    // int power = 4;
+    // String ability = "to slice anyone or anything within 10 feet";
+    // String type = "cudgel";
 
-    public Axe(String name, int power, String ability, String type) {
-        super(name, power, ability, type);
+    public Axe() {
+        super("axe",4 , "to slice anyone or anything within 10 feet", "cudgel");
     }
-    
 }
