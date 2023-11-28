@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *  File : Hero.java
  *******************************************/
 
-public abstract class Hero implements Comparable<Hero> {
+public abstract class Hero implements Comparable<Monster> {
     String name;
     int strength;
     String health;
@@ -58,7 +58,7 @@ public abstract class Hero implements Comparable<Hero> {
     }
 
     @Override
-    public int compareTo(Hero o) {
+    public int compareTo(Monster o) {
         if (this.getStrength() > o.getStrength()) {
             return 1;
         } else if (this.getStrength() == o.getStrength()) {

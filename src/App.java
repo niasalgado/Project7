@@ -79,8 +79,7 @@ public class App extends Application {
 
         Scene scene = new Scene(pane, 600, 600);
 
-
-        // warrior handler
+         // warrior handler
         warriorBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -90,6 +89,7 @@ public class App extends Application {
                     Warrior warrior = new Warrior("Mulan", 5, "healthy", weapons, false);
                     // TODO: change the SOP line below to display the created instance on the FX stage
                     System.out.println(warrior.getName());
+                    System.out.println(warrior.getWeapons());
                     warriorBtn.setVisible(false);
                     faerieBtn.setVisible(true);
                 } catch (HeroStrengthException e1) {
@@ -143,18 +143,19 @@ public class App extends Application {
                 compareWarrBtn2.setVisible(true);
                 compareFaerieBtn1.setVisible(true);
                 compareFaerieBtn2.setVisible(true);
+            }
+        });
 
-                compares();
+        // TODO: implement compareTo method from Hero to Monster
+        compareWarrBtn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle (ActionEvent e) {
+               
             }
         });
 
         stage.setTitle("My FX App");
         stage.setScene(scene);
         stage.show();
-    }
-
-    // TODO: compares heros vs monster depending on what button the user clicks
-     public void compares() {
-        System.out.println("comapres");
     }
 }

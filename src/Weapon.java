@@ -51,6 +51,6 @@ public class Weapon {
 
     @Override
     public String toString() {
-        return "Weapon [name=" + name + ", power=" + power + ", ability=" + ability + ", type=" + type + "]";
+        return "Weapon: " + name;
     }
 }
