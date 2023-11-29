@@ -37,7 +37,6 @@ public class App extends Application {
         Ogre ogre = new Ogre("Shrek", "swamp", "low", 6, weapons, false);
         Troll troll = new Troll("Mike", "office", "low", 2, weapons, 3.0);
         
-
         GridPane pane = new GridPane();
 
         pane.setAlignment(Pos.TOP_LEFT);
@@ -49,18 +48,18 @@ public class App extends Application {
 
         // heroes and monsters buttons
         Button warriorBtn = new Button("Create Warrior");
-        pane.add(warriorBtn, 1, 4);
+        pane.add(warriorBtn, 3, 4);
 
         Button faerieBtn = new Button("Create Faerie");
-        pane.add(faerieBtn, 1, 4);
+        pane.add(faerieBtn, 3, 4);
         faerieBtn.setVisible(false);
 
         Button ogreBtn = new Button("Create Ogre");
-        pane.add(ogreBtn, 1, 4);
+        pane.add(ogreBtn, 3, 4);
         ogreBtn.setVisible(false);
 
         Button trollBtn = new Button("Create Troll");
-        pane.add(trollBtn, 1, 4);
+        pane.add(trollBtn, 3, 4);
         trollBtn.setVisible(false);
 
 
@@ -82,9 +81,19 @@ public class App extends Application {
         compareFaerieBtn2.setVisible(false);
 
 
-        Label message = new Label();
-        pane.add(message, 0, 5);
-        message.setTextFill(Color.RED);
+        Label msg = new Label();
+        pane.add(msg, 0, 11);
+
+        Label msg2 = new Label();
+        pane.add(msg2, 0, 12);
+
+        Label msg3 = new Label();
+        pane.add(msg3, 0, 13);
+
+        Label msg4 = new Label();
+        pane.add(msg4, 0, 14);
+
+        msg.setTextFill(Color.RED);
 
         Scene scene = new Scene(pane, 600, 600);
 
@@ -94,8 +103,8 @@ public class App extends Application {
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(axe, bo, grenade));
                 warrior.setWeapons(weapons);
-                // TODO: change the SOP line below to display the created instance on the FX stage
                 System.out.println(warrior.getName() + " " + warrior.getWeapons());
+                msg.setText(warrior.getName() + " " + warrior.getWeapons());
                 warriorBtn.setVisible(false);
                 faerieBtn.setVisible(true);
             }
@@ -107,8 +116,8 @@ public class App extends Application {
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(sleepSpell));
                 faerie.setWeapons(weapons);
-                // TODO: change the SOP line below to display the created instance on the FX stage
                 System.out.println(faerie.getName() + " " + faerie.getWeapons());
+                msg2.setText(faerie.getName() + " " + faerie.getWeapons());
                 faerieBtn.setVisible(false);
                 ogreBtn.setVisible(true);
             }
@@ -120,8 +129,8 @@ public class App extends Application {
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(bo, grenade));
                 ogre.setWeapons(weapons);
-                // TODO: change the SOP line below to display the created instance on the FX stage
                 System.out.println(ogre.getName() + " " + ogre.getWeapons());
+                msg3.setText(ogre.getName() + " " + ogre.getWeapons());
                 ogreBtn.setVisible(false);
                 trollBtn.setVisible(true);
             }
@@ -133,8 +142,8 @@ public class App extends Application {
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(axe, bo));
                 troll.setWeapons(weapons);
-                // TODO: change the SOP line below to display the created instance on the FX stage
                 System.out.println(troll.getName() + " " + troll.getWeapons());
+                msg4.setText(troll.getName() + " " + troll.getWeapons());
                 trollBtn.setVisible(false);
 
                 compareWarrBtn1.setVisible(true);
