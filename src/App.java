@@ -24,12 +24,20 @@ public class App extends Application {
         launch(args);
     }
 
-    Weapon axe = new Weapon("axe",5 , "to slice anyone or anything within 10 feet", "cudgel");
-    Weapon bo = new Weapon("bo", 3, "to bludgeon anyone or anything within 10 feet", "staff");
-    Weapon grenade = new Weapon("grenade", 6, "destorys everything within 25 feet of explosion site", "explosive");
-    Weapon sleepSpell = new Weapon("sleepSpell", 5, "puts named person to sleep, must be within 20 feet of initiator.", "spell");
+    public void start(Stage stage) throws HeroStrengthException {
+        ArrayList<Weapon> weapons = null;
+    
+        Weapon axe = new Weapon("axe",5 , "to slice anyone or anything within 10 feet", "cudgel");
+        Weapon bo = new Weapon("bo", 3, "to bludgeon anyone or anything within 10 feet", "staff");
+        Weapon grenade = new Weapon("grenade", 6, "destorys everything within 25 feet of explosion site", "explosive");
+        Weapon sleepSpell = new Weapon("sleepSpell", 5, "puts named person to sleep, must be within 20 feet of initiator.", "spell");
 
-    public void start(Stage stage) {
+        Warrior warrior = new Warrior("Mulan", 5, "healthy", weapons, false);
+        Faerie faerie = new Faerie("Tinkerbell", 5, "healthy", weapons, 2.5);
+        Ogre ogre = new Ogre("Shrek", "swamp", "low", 6, weapons, false);
+        Troll troll = new Troll("Mike", "office", "low", 2, weapons, 3.0);
+        
+
         GridPane pane = new GridPane();
 
         pane.setAlignment(Pos.TOP_LEFT);
@@ -38,6 +46,7 @@ public class App extends Application {
         pane.setVgap(20);
 
         // TODO: add area for the warrior/hero photos above the buttons
+
         // heroes and monsters buttons
         Button warriorBtn = new Button("Create Warrior");
         pane.add(warriorBtn, 1, 4);
@@ -84,17 +93,11 @@ public class App extends Application {
             @Override
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(axe, bo, grenade));
-
-                try {
-                    Warrior warrior = new Warrior("Mulan", 5, "healthy", weapons, false);
-                    // TODO: change the SOP line below to display the created instance on the FX stage
-                    System.out.println(warrior.getName());
-                    System.out.println(warrior.getWeapons());
-                    warriorBtn.setVisible(false);
-                    faerieBtn.setVisible(true);
-                } catch (HeroStrengthException e1) {
-                    System.out.println(e1);
-                }
+                warrior.setWeapons(weapons);
+                // TODO: change the SOP line below to display the created instance on the FX stage
+                System.out.println(warrior.getName() + " " + warrior.getWeapons());
+                warriorBtn.setVisible(false);
+                faerieBtn.setVisible(true);
             }
         });
 
@@ -103,16 +106,11 @@ public class App extends Application {
             @Override
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(sleepSpell));
-
-                try {
-                    Faerie faerie = new Faerie("Tinkerbell", 5, "healthy", weapons, 2.5);
-                    // TODO: change the SOP line below to display the created instance on the FX stage
-                    System.out.println(faerie.getName());
-                    faerieBtn.setVisible(false);
-                    ogreBtn.setVisible(true);
-                } catch (HeroStrengthException e1) {
-                    System.out.println(e1);
-                }
+                faerie.setWeapons(weapons);
+                // TODO: change the SOP line below to display the created instance on the FX stage
+                System.out.println(faerie.getName() + " " + faerie.getWeapons());
+                faerieBtn.setVisible(false);
+                ogreBtn.setVisible(true);
             }
         });
 
@@ -121,9 +119,9 @@ public class App extends Application {
             @Override
             public void handle(ActionEvent e) {
                 ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(bo, grenade));
-                Ogre ogre = new Ogre("Shrek", "swamp", "low", 6, weapons, false);
+                ogre.setWeapons(weapons);
                 // TODO: change the SOP line below to display the created instance on the FX stage
-                System.out.println(ogre.getName());
+                System.out.println(ogre.getName() + " " + ogre.getWeapons());
                 ogreBtn.setVisible(false);
                 trollBtn.setVisible(true);
             }
@@ -133,10 +131,10 @@ public class App extends Application {
         trollBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(bo, grenade));
-                Troll troll = new Troll("Mike", "office", "low", 2, weapons, 3.0);
+                ArrayList<Weapon> weapons = new ArrayList<Weapon>(Arrays.asList(axe, bo));
+                troll.setWeapons(weapons);
                 // TODO: change the SOP line below to display the created instance on the FX stage
-                System.out.println(troll.getName());
+                System.out.println(troll.getName() + " " + troll.getWeapons());
                 trollBtn.setVisible(false);
 
                 compareWarrBtn1.setVisible(true);
@@ -146,11 +144,55 @@ public class App extends Application {
             }
         });
 
-        // TODO: implement compareTo method from Hero to Monster
+        // compares warrior to ogre
         compareWarrBtn1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent e) {
-               
+                if (warrior.compareTo(ogre) == 1)
+                System.out.println("Warrior has more strength than ogre");
+                else if (warrior.compareTo(ogre) == 0)
+                System.out.println("Both warrior and ogre are equal in strength");
+                else 
+                System.out.println("Ogre is stronger than Warrior");
+            }
+        });
+
+        // compares warrior to troll
+        compareWarrBtn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle (ActionEvent e) {
+               if (warrior.compareTo(troll) == 1)
+                System.out.println("Warrior has more strength than troll");
+                else if (warrior.compareTo(ogre) == 0)
+                System.out.println("Both warrior and troll are equal in strength");
+                else 
+                System.out.println("Troll is stronger than Warrior");
+            }
+        });
+
+        // compares faerie to ogre
+        compareFaerieBtn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle (ActionEvent e) {
+               if (faerie.compareTo(ogre) == 1)
+                System.out.println("Faerie has more strength than ogre");
+                else if (faerie.compareTo(ogre) == 0)
+                System.out.println("Both Faerie and ogre are equal in strength");
+                else 
+                System.out.println("Ogre is stronger than Faerie");
+            }
+        });
+
+        // compares faerie to troll
+        compareFaerieBtn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle (ActionEvent e) {
+               if (faerie.compareTo(troll) == 1)
+                System.out.println("Faerie has more strength than troll");
+                else if (faerie.compareTo(troll) == 0)
+                System.out.println("Both Faerie and ogre are equal in strength");
+                else 
+                System.out.println("troll is stronger than Faerie");
             }
         });
 
