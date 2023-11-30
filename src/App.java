@@ -80,7 +80,7 @@ public class App extends Application {
         pane.add(compareFaerieBtn2, 3, 9);
         compareFaerieBtn2.setVisible(false);
 
-
+        // text fields for results outputs
         Label msg = new Label();
         pane.add(msg, 0, 11);
 
@@ -93,7 +93,18 @@ public class App extends Application {
         Label msg4 = new Label();
         pane.add(msg4, 0, 14);
 
-        msg.setTextFill(Color.RED);
+        Label msgA = new Label();
+        pane.add(msgA, 2, 11);
+
+        Label msgB = new Label();
+        pane.add(msgB, 2, 12);
+
+        Label msgC = new Label();
+        pane.add(msgC, 2, 13);
+
+        Label msgD = new Label();
+        pane.add(msgD, 2, 14);
+
 
         Scene scene = new Scene(pane, 600, 600);
 
@@ -158,11 +169,11 @@ public class App extends Application {
             @Override
             public void handle (ActionEvent e) {
                 if (warrior.compareTo(ogre) == 1)
-                System.out.println("Warrior has more strength than ogre");
+                msgA.setText("Warrior has more strength than ogre");
                 else if (warrior.compareTo(ogre) == 0)
-                System.out.println("Both warrior and ogre are equal in strength");
+                msgA.setText("Both warrior and ogre are equal in strength");
                 else 
-                System.out.println("Ogre is stronger than Warrior");
+                msgA.setText("Ogre is stronger than Warrior");
             }
         });
 
@@ -171,11 +182,11 @@ public class App extends Application {
             @Override
             public void handle (ActionEvent e) {
                if (warrior.compareTo(troll) == 1)
-                System.out.println("Warrior has more strength than troll");
+                msgB.setText("Warrior has more strength than troll");
                 else if (warrior.compareTo(ogre) == 0)
-                System.out.println("Both warrior and troll are equal in strength");
+                msgB.setText("Both warrior and troll are equal in strength");
                 else 
-                System.out.println("Troll is stronger than Warrior");
+                msgB.setText("Troll is stronger than Warrior");
             }
         });
 
@@ -184,11 +195,11 @@ public class App extends Application {
             @Override
             public void handle (ActionEvent e) {
                if (faerie.compareTo(ogre) == 1)
-                System.out.println("Faerie has more strength than ogre");
+                msgC.setText("Faerie has more strength than ogre");
                 else if (faerie.compareTo(ogre) == 0)
-                System.out.println("Both Faerie and ogre are equal in strength");
+                msgC.setText("Both Faerie and ogre are equal in strength");
                 else 
-                System.out.println("Ogre is stronger than Faerie");
+                msgC.setText("Ogre is stronger than Faerie");
             }
         });
 
@@ -197,11 +208,11 @@ public class App extends Application {
             @Override
             public void handle (ActionEvent e) {
                if (faerie.compareTo(troll) == 1)
-                System.out.println("Faerie has more strength than troll");
+                msgD.setText("Faerie has more strength than troll");
                 else if (faerie.compareTo(troll) == 0)
-                System.out.println("Both Faerie and ogre are equal in strength");
+                msgD.setText("Both Faerie and ogre are equal in strength");
                 else 
-                System.out.println("troll is stronger than Faerie");
+                msgD.setText("troll is stronger than Faerie");
             }
         });
 
